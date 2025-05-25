@@ -1,5 +1,5 @@
 start
-? Объявление переменных с расстояниями (в км)
+? Объявление переменных с расстояниями (км)
 new AB number
 set AB 2               ? Расстояние А-В пешком
 new BC number
@@ -12,13 +12,13 @@ set AD AB
 set AD AD + BC
 set AD AD + CD
 
-? Cкорость
+? Задаю скорость
 new walk_speed number
 set walk_speed 5    ? Скорость пешком (км/ч)
 new bus_speed number
 set bus_speed 30    ? Скорость автобуса (км/ч)
 new bus_wait number
-set bus_wait 10     ? Ожидание автобуса (минут)
+set bus_wait 10     ? Ожидание автобуса (мин)
 
 ? Расчет времени для маршрута1 (AB-BC-CD)
 new time_ab number
@@ -38,18 +38,18 @@ set time_ad (AD / walk_speed) * 60
 new total_route2 number
 set total_route2 time_ad
 
-? Вывод 
+? Вывод данных о маршрутач 
 log string "--- Маршрут1 (AB-BC-CD) ---"
-log string "А-В: " >> AB >> " км | " >> time_ab >> " мин"
-log string "B-C: " >> BC >> " км | " >> time_bus >> " мин + " >> bus_wait >> " мин ожидания"
-log string "C-D: " >> CD >> " км | " >> time_cd >> " мин"
+log string "А-В: " >> AB >> " км / " >> time_ab >> " мин"
+log string "B-C: " >> BC >> " км / " >> time_bus >> " мин + " >> bus_wait >> " мин ожидания"
+log string "C-D: " >> CD >> " км / " >> time_cd >> " мин"
 log string "Итого: " >> total_route1 >> " мин"
 
 log string "--- Маршрут2 (AD) ---"
 log string "A->D: " >> AD >> " км | " >> time_ad >> " мин"
 log string "Итого: " >> total_route2 >> " мин"
 
-? Сравнение маршрутов
+? Сравнение их
 if (total_route1 > total_route2)
     log string "Вывод: Маршрут 2 быстрее на " >> (total_route1 - total_route2) >> " мин"
 else
